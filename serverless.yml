@@ -1,0 +1,65 @@
+service: aws-lambda-starwars
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-1:360791452945:table/StarWarsTable
+  httpApi:
+    cors: true
+functions:
+  createStarWars:
+    handler: src/createStarWars.createStarWars
+    events:
+      - httpApi:
+          path: /StarWars
+          method: post
+  getStarWars:
+    handler: src/getStarWars.getStarWars
+    events:
+      - httpApi:
+          path: /StarWars
+          method: get
+  translationStarWars:
+    handler: src/translationStarWars.translationStarWars
+    events:
+      - httpApi:
+          path: /translationStarWars
+          method: get
+  getOneStarWars:
+    handler: src/getOneStarWars.getOneStarWars
+    events:
+      - httpApi:
+          path: /StarWars/{id}
+          method: get
+  updateStarWars:
+    handler: src/updateStarWars.updateStarWars
+    events:
+      - httpApi:
+          path: /StarWars/{id}
+          method: patch
+  deleteStarWars:
+    handler: src/deleteStarWars.deleteStarWars
+    events:
+      - httpApi:
+          path: /StarWars/{id}
+          method: delete
+resources:
+  Resources:
+    StarWarsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: StarWarsTable
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH

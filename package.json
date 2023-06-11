@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "aws-sdk": "^2.1395.0",
+    "aws-sdk-mock": "^5.8.0",
+    "node-fetch": "^2.6.11",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "serverless-openapi": "^1.1.2",
+    "serverless-openapi-documentation": "^0.4.0"
+  }
+}
