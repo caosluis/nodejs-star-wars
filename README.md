@@ -7,7 +7,7 @@ Esta es una aplicacion de Prueba Usando Serverless Framework, AWS Lambda, Dynamo
 ```
 $ serverless deploy --verbose
 ```
-Despues del despliegue y si no existen Cambios deberia verse algo similar a:
+Despues del despliegue y si no existen cambios deberia verse algo similar a:
 
 ```Deploying aws-lambda-starwars to stage dev (us-east-1)
 Packaging
