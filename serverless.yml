@@ -26,11 +26,17 @@ functions:
       - httpApi:
           path: /StarWars
           method: get
-  translationStarWars:
-    handler: src/translationStarWars.translationStarWars
+  translationStarWars_films:
+    handler: src/translationStarWars_films.translationStarWars
     events:
       - httpApi:
-          path: /translationStarWars
+          path: /translationStarWars_films
+          method: get
+  translationStarWars_people:
+    handler: src/translationStarWars_people.translationStarWars
+    events:
+      - httpApi:
+          path: /translationStarWars_people
           method: get
   getOneStarWars:
     handler: src/getOneStarWars.getOneStarWars
